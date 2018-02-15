@@ -30,8 +30,10 @@ func main() {
 }
 ```
 nothing too complicated.. they(=golang developers) just switched variable first and type after that.
+
 Fixed type if initialized... fine.
-Return value is at the end of function defination.. makes sence. 
+Return value is at the end of function defination.. makes sence.
+
 You need brackes if you have more than one return value (btw really nice feature).
 
 # [](#header-1) go routines
@@ -63,7 +65,8 @@ func main() {
 	time.Sleep(500*time.Millisecond)
 }
 ```
-For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. Perhaps in future I'll use the 'context' stuff they included quite resently.
+For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. 
+Perhaps in future I'll use the 'context' stuff they included quite resently.
 
 # [](#header-1) packages
 coming soo..
