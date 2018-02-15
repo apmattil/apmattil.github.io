@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <link rel="stylesheet" href="/assets/css/style.css?v=">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <!--  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
   <script type="text/javascript" src="/assets/js/script.js"></script>
 
 <!-- Begin Jekyll SEO tag v2.4.0 -->
@@ -60,177 +60,67 @@
 
 </head>
 
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>.</p>
+<p><strong>intro</strong></p>
 
-<p><a href="another-page">Link to another page</a>.</p>
+<p>So I needed to learn golang.. I tought I’ll share my experiences.</p>
 
-<p><strong>Some new text</strong></p>
+<p>Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but you will anyway.</p>
 
-<p>There should be whitespace between paragraphs.</p>
+<p>So here is what I learned this far.</p>
 
-<p>There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.</p>
+<h1 id="-first-look"><a href="#header-1"></a> first look</h1>
+<p>e.g edited https://tour.golang.org/basics/4</p>
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="x"> </span><span class="kt">int</span><span class="p">,</span><span class="x"> </span><span class="n">y</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="kt">int</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">x</span><span class="x"> </span><span class="o">+</span><span class="x"> </span><span class="n">y</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">a</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"hello"</span><span class="x">
+	</span><span class="n">b</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">123456</span><span class="x">
 
-<h1 id="header-1"><a href="#header-1"></a>Header 1</h1>
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="m">42</span><span class="p">,</span><span class="x"> </span><span class="m">13</span><span class="p">))</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>nothing too complicated.. they(=golang developers) just switched variable first and type after that.
+Fixed type if initialized… fine.
+Return value is at the end of function defination.. makes sence. 
+You need brackes if you have more than one return value (btw really nice feature).</p>
 
-<p>This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.</p>
+<h1 id="-go-routines"><a href="#header-1"></a> go routines</h1>
 
-<h2 id="header-2"><a href="#header-2"></a>Header 2</h2>
+<p>I think them as threads, fork etc.
+(I don’t know how to add neat golang play area here yet, but if you run this first foo funtion exits last.)</p>
 
-<blockquote>
-  <p>This is a blockquote following a header.</p>
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
-  <p>When something is important enough, you do it even if the odds are not in your favor.</p>
-</blockquote>
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"time"</span><span class="x">
 
-<h3 id="header-3"><a href="#header-3"></a>Header 3</h3>
+</span><span class="k">func</span><span class="x"> </span><span class="n">foo</span><span class="p">(</span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">sleepTime</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">100</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Millisecond</span><span class="x">
+	</span><span class="n">sleepTime</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">sleepTime</span><span class="x"> </span><span class="o">*</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="x">
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Javascript code with syntax highlighting.</span>
-<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">lang</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">dateformat</span><span class="p">.</span><span class="nx">i18n</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./lang/'</span> <span class="o">+</span> <span class="nx">l</span><span class="p">)</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%d: hello from go func, sleep %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">sleepTime</span><span class="p">)</span><span class="x">
+	</span><span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">sleepTime</span><span class="p">)</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%d: exit go func</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">id</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">func</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
-<span class="k">return</span>
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">threadId</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">3</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"hello from main</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span><span class="x">
+	</span><span class="k">go</span><span class="x"> </span><span class="n">foo</span><span class="p">(</span><span class="n">threadId</span><span class="p">)</span><span class="x">
+	</span><span class="n">threadId</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="m">1</span><span class="x">
+	</span><span class="k">go</span><span class="x"> </span><span class="n">foo</span><span class="p">(</span><span class="n">threadId</span><span class="p">)</span><span class="x">
+	</span><span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">500</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Millisecond</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. Perhaps in future I’ll use the ‘context’ stuff they included quite resently.</p>
 
-<span class="p">}</span>
-</code></pre></div></div>
+<h1 id="-packages"><a href="#header-1"></a> packages</h1>
+<p>coming soo..</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby code with syntax highlighting</span>
-<span class="no">GitHubPages</span><span class="o">::</span><span class="no">Dependencies</span><span class="p">.</span><span class="nf">gems</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">gem</span><span class="p">,</span> <span class="n">version</span><span class="o">|</span>
-  <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span><span class="p">(</span><span class="n">gem</span><span class="p">,</span> <span class="s2">"= </span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<h4 id="header-4"><a href="#header-4"></a>Header 4</h4>
-
-<ul>
-  <li>This is an unordered list following a header.</li>
-  <li>This is an unordered list following a header.</li>
-  <li>This is an unordered list following a header.</li>
-</ul>
-
-<h5 id="header-5"><a href="#header-5"></a>Header 5</h5>
-
-<ol>
-  <li>This is an ordered list following a header.</li>
-  <li>This is an ordered list following a header.</li>
-  <li>This is an ordered list following a header.</li>
-</ol>
-
-<h6 id="header-6"><a href="#header-6"></a>Header 6</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">head1</th>
-      <th style="text-align: left">head two</th>
-      <th style="text-align: left">three</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good swedish fish</td>
-      <td style="text-align: left">nice</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">out of stock</td>
-      <td style="text-align: left">good and plenty</td>
-      <td style="text-align: left">nice</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good <code class="highlighter-rouge">oreos</code></td>
-      <td style="text-align: left">hmm</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good <code class="highlighter-rouge">zoute</code> drop</td>
-      <td style="text-align: left">yumm</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="theres-a-horizontal-rule-below-this">There’s a horizontal rule below this.</h3>
-
-<hr />
-
-<h3 id="here-is-an-unordered-list">Here is an unordered list:</h3>
-
-<ul>
-  <li>Item foo</li>
-  <li>Item bar</li>
-  <li>Item baz</li>
-  <li>Item zip</li>
-</ul>
-
-<h3 id="and-an-ordered-list">And an ordered list:</h3>
-
-<ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-  <li>Item four</li>
-</ol>
-
-<h3 id="and-a-nested-list">And a nested list:</h3>
-
-<ul>
-  <li>level 1 item
-    <ul>
-      <li>level 2 item</li>
-      <li>level 2 item
-        <ul>
-          <li>level 3 item</li>
-          <li>level 3 item</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>level 1 item
-    <ul>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
-    </ul>
-  </li>
-  <li>level 1 item
-    <ul>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
-    </ul>
-  </li>
-  <li>level 1 item</li>
-</ul>
-
-<h3 id="small-image">Small image</h3>
-
-<p><img src="https://assets-cdn.github.com/images/icons/emoji/octocat.png" alt="" /></p>
-
-<h3 id="large-image">Large image</h3>
-
-<p><img src="https://guides.github.com/activities/hello-world/branching.png" alt="" /></p>
-
-<h3 id="definition-lists-can-be-used-with-html-syntax">Definition lists can be used with HTML syntax.</h3>
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The final element.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The end so far.
 </code></pre></div></div>
 
 <p><a href="http://hits.dwyl.io/apmattil/apmattil.github.io"><img src="http://hits.dwyl.io/apmattil/apmattil.github.io.svg" alt="HitCount" /></a></p>

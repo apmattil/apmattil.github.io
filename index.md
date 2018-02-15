@@ -4,135 +4,72 @@ commentIssueId: 1
 ---
 {% include head.md %}
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-[Link to another page](another-page).
+**intro**
 
-**Some new text**
+So I needed to learn golang.. I tought I'll share my experiences.
+
+Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but you will anyway.
+
+So here is what I learned this far.
 
 
-There should be whitespace between paragraphs.
+# [](#header-1) first look
+e.g edited https://tour.golang.org/basics/4
+```golang
+package main
+import "fmt"
+func add(x int, y int) int {
+	return x + y
+}
+func main() {
+	a := "hello"
+	b := 123456
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# [](#header-1)Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## [](#header-2)Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### [](#header-3)Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-  return false;
+	fmt.Println(add(42, 13))
 }
 ```
+nothing too complicated.. they(=golang developers) just switched variable first and type after that.
+Fixed type if initialized... fine.
+Return value is at the end of function defination.. makes sence. 
+You need brackes if you have more than one return value (btw really nice feature).
 
-```c++
-func foo() {
-return
+# [](#header-1) go routines
 
+I think them as threads, fork etc.
+(I don't know how to add neat golang play area here yet, but if you run this first foo funtion exits last.)
+
+```golang
+package main
+
+import "fmt"
+import "time"
+
+func foo(id int) {
+	sleepTime := 100*time.Millisecond
+	sleepTime = sleepTime * time.Duration(id)
+
+	fmt.Printf("%d: hello from go func, sleep %d\n", id, sleepTime)
+	time.Sleep(sleepTime)
+	fmt.Printf("%d: exit go func\n",id)
+}
+
+func main() {
+	threadId := 3
+	fmt.Printf("hello from main\n")
+	go foo(threadId)
+	threadId = 1
+	go foo(threadId)
+	time.Sleep(500*time.Millisecond)
 }
 ```
+For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. Perhaps in future I'll use the 'context' stuff they included quite resently.
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### [](#header-4)Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### [](#header-5)Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### [](#header-6)Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+# [](#header-1) packages
+coming soo..
 
 ```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
+The end so far.
 ```
 
 [![HitCount](http://hits.dwyl.io/apmattil/apmattil.github.io.svg)](http://hits.dwyl.io/apmattil/apmattil.github.io)
