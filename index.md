@@ -9,9 +9,18 @@ commentIssueId: 1
 
 So I needed to learn golang.. I tought I'll share my experiences.
 
+The thing why I really like golang (so far) is that it makes standalone executable.
+Of course this means that everything is staticly linked to the executable/binary and the size grows compared e.g C.. but compared to benefit of having executable standalone, I could not care less.
+
+No different path settings/exports/registry entries, install programs etc.. just run or compile+run the binary ;)
+
+have you ever seen python or ruby script to fail due imported library incombability ;)
+
+And so far what I have tried, the same code compiles to windows and runs the same way.. standalone. (You can even copile it at linux for windows).
+
 Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but you will anyway.
 
-So here is what I learned this far.
+So here is what I learned this far :
 
 
 # [](#header-1) first look
@@ -65,8 +74,9 @@ func main() {
 	time.Sleep(500*time.Millisecond)
 }
 ```
-For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. 
+For some really good reason there ++really is no++ official api/function to get the go routine id (thread id), so I just use some id for now. I did try to use uuid but those make log line too long.
 Perhaps in future I'll use the 'context' stuff they included quite resently.
+I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed yet.
 
 # [](#header-1) packages
 coming soo..
