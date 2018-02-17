@@ -55,9 +55,10 @@ I think it is stated somewhere but I missed first that if function name starts w
 Basic function is simple as above.
 But then there is sometimes stuff just after the 'func' keyword, tutorials somehow seem to skip this .. I leared this by googling the very similar question.
 
-But then function can be also 'class/struct' function.
+Thn functions can also be 'class/struct'-functions with out being defined in the class defination.
 
 That is the stuff in brackets after 'func' is like automaticly made class/struct instance.. and used like this-pointer in C++.
+In this example 'y' being this-pointer.
 
 ```golang
 package main
