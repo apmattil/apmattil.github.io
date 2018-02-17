@@ -113,6 +113,10 @@ For some really good reason there ++really is no++ official api/function to get 
 Perhaps in future I'll use the 'context' stuff they included quite resently.
 I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed that much yet.
 
+# [](#header-1) struct
+
+struct is like class in C++.
+
 # [](#header-1) packages
 
 package imports are like the one's in python, and acts like class in C++.
@@ -182,7 +186,7 @@ In C++ you could inherit the whole class (my_utils), and then overwrite the Foo(
 
 As far I know ,you can not do this in golang with out tricks ;(
 
-# [](#header-3) some whining about this issue
+## [](#header-3) some whining about this issue
 
 "They are privat for a reason".. bollocks, my personal quess is that I would do it.. because as said in C++ you can just inherit and do what ever you want with members.
 
@@ -196,7 +200,8 @@ I hope standard library has sceptical members what to put there or were are in t
 So I learned **my lesson**, I have to think what members really need be private or use interface in an github project. 
 If I think it is any use to anybody other than just cut and paste code.
 
-```
+
+>```
 The end so far.
 ```
 
