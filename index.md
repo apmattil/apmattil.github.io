@@ -120,14 +120,11 @@ Each package file can even have init() function.. like class constructor in C++.
 
 As I wrote earlier funtion names with starting capitals are public with small letter private to the file (or in C++ to the class).
 
-This does not only applie to to the functions but also to the e.g constans, structs etc.
+This does not only apply to the functions but also to the e.g constans, structs etc.
 
-```golang
-import my_utils
-```
 Again nothing really compilated.
 
-in file my_utils.go
+in file src/my_utils.go
 ```golang
 import "fmt"
 
@@ -139,6 +136,7 @@ so in my_prog.go I can call it.
 
 ```golang
 package main
+import my_utils
 
 func main() {
 	Foo(5)
@@ -177,18 +175,26 @@ func Foo(x int, y my_server) {
 
 Because my_server is private I can not use Foo(), I can not even access/set the bar variable if I change the my_server to public My_server !!
 
+
 Now because the my_server is private I can not overwrite the Foo() anymore in my main().
 
 In C++ you could inherit the whole class (my_utils), and then overwrite the Foo().
 
-As far I know you can not do this in golang ;(
+As far I know ,you can not do this in golang with out tricks ;(
+
+# [](#header-3) some whining about this issue
+
+"They are privat for a reason".. bollocks, my personal quess is that I would do it.. because as said in C++ you can just inherit and do what ever you want with members.
 
 Yeah, I know this is what the golang interface stuff is for but you see this all the time.. and end up ripping others code.
 
 A lot of code/project what I have seen are not writen to be extended or used anywhere else than specific case, even the projects intention was to create interface !
 
 In general I have started to be little sceptical of projects started 2/3 years ago.. A lot of them seem to be playing with golang and just dumped to github.
+I hope standard library has sceptical members what to put there or were are in the mess as some many other languages.
 
+So I learned **my lesson**, I have to think what members really need be private or use interface in an github project. 
+If I think it is any use to anybody other than just cut and paste code.
 
 ```
 The end so far.

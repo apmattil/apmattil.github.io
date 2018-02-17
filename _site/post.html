@@ -11,20 +11,20 @@
   <script type="text/javascript" src="/assets/js/script.js"></script>
 
 <!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Ari’s page | C coder learing golang</title>
+<title>Ari’s page | C coder learing golang. C C++ python to golang.</title>
 <meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Ari’s page" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="C coder learing golang" />
-<meta property="og:description" content="C coder learing golang" />
+<meta name="description" content="C coder learing golang. C C++ python to golang." />
+<meta property="og:description" content="C coder learing golang. C C++ python to golang." />
 <link rel="canonical" href="http://localhost:4000/post.html" />
 <meta property="og:url" content="http://localhost:4000/post.html" />
 <meta property="og:site_name" content="Ari’s page" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/post.html","description":"C coder learing golang","@type":"WebPage","headline":"Ari’s page","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/post.html","description":"C coder learing golang. C C++ python to golang.","@type":"WebPage","headline":"Ari’s page","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <meta name="description" content="C coder learing golang">
+  <meta name="description" content="C coder learing golang. C C++ python to golang.">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -37,7 +37,7 @@
       <h1 class="title">Ari's page</h1>
     </header>
     <div id="container">
-      <p class="tagline">C coder learing golang</p>
+      <p class="tagline">C coder learing golang. C C++ python to golang.</p>
       <div id="main" role="main">
         <div class="download-bar">
         <div class="inner">
@@ -71,7 +71,19 @@
 
 <p>Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but you will anyway.</p>
 
-<p>So here is what I learned this far.</p>
+<p>So here is what I learned this far :</p>
+
+<h1 id="-standalone-binaryexecutable"><a href="#header-1"></a> standalone binary/executable</h1>
+
+<p>The thing why I really like golang (so far) is that it makes standalone executable.</p>
+
+<p>Of course this means that everything is staticly linked to the executable/binary and the size grows compared e.g C.. but compared to benefit of having executable standalone, I could not care less.</p>
+
+<p>No different path settings/exports/registry entries, install programs etc.. just run or compile+run the binary ;)</p>
+
+<p>have you ever seen python or ruby script to fail due imported library incombability ;)</p>
+
+<p>And so far what I have tried, the same code compiles to windows and runs the same way.. standalone. (You can even copile it at linux for windows).</p>
 
 <h1 id="-first-look"><a href="#header-1"></a> first look</h1>
 <p>e.g edited https://tour.golang.org/basics/4</p>
@@ -87,15 +99,47 @@
 	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="m">42</span><span class="p">,</span><span class="x"> </span><span class="m">13</span><span class="p">))</span><span class="x">
 </span><span class="p">}</span><span class="x">
 </span></code></pre></div></div>
-<p>nothing too complicated.. they(=golang developers) just switched variable first and type after that.
-Fixed type if initialized… fine.
-Return value is at the end of function defination.. makes sence. 
-You need brackes if you have more than one return value (btw really nice feature).</p>
+<p>nothing too complicated.. they(=golang developers) just switched variable first and type after that.</p>
+
+<p>variable type fixed to the type of initialized… fine.
+Return value is at the end of function defination.. makes sence.</p>
+
+<p>You need brackes if you have more than one return value (btw really nice feature).</p>
+
+<p>I think it is stated somewhere but I missed first that if function name starts with CAPITAL e.f Foo() it is public when in package.</p>
+
+<h1 id="-funtions"><a href="#header-1"></a> funtions</h1>
+
+<p>Basic function is simple as above.
+But then there is sometimes stuff just after the ‘func’ keyword, tutorials somehow seem to skip this .. I leared this by googling the very similar question.</p>
+
+<p>But then function can be also ‘class/struct’ function.</p>
+
+<p>That is the stuff in brackets after ‘func’ is like automaticly made class/struct instance.. and used like this-pointer in C++.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">zoo</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">i</span><span class="x"> </span><span class="kt">string</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">y</span><span class="x"> </span><span class="n">zoo</span><span class="p">)</span><span class="x"> </span><span class="n">Foo</span><span class="p">(</span><span class="n">x</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+      </span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"something %d %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">x</span><span class="p">,</span><span class="x"> </span><span class="n">y</span><span class="o">.</span><span class="n">i</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">y</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">zoo</span><span class="p">{}</span><span class="x">
+     </span><span class="n">y</span><span class="o">.</span><span class="n">i</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"hello"</span><span class="x"> 
+     </span><span class="n">y</span><span class="o">.</span><span class="n">Foo</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>output of this is : 
+something 5 hello</p>
 
 <h1 id="-go-routines"><a href="#header-1"></a> go routines</h1>
 
-<p>I think them as threads, fork etc.
-(I don’t know how to add neat golang play area here yet, but if you run this first foo funtion exits last.)</p>
+<p>I think them as threads, fork etc.</p>
 
 <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
@@ -120,10 +164,87 @@ You need brackes if you have more than one return value (btw really nice feature
 	</span><span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">500</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Millisecond</span><span class="p">)</span><span class="x">
 </span><span class="p">}</span><span class="x">
 </span></code></pre></div></div>
-<p>For some really good reason there ++really is no++ api/function to get the go routine id (thread id), so I just use some id for now. Perhaps in future I’ll use the ‘context’ stuff they included quite resently.</p>
+<p>For some really good reason there ++really is no++ official api/function to get the go routine id (thread id), so I just use some id for now. I did try to use uuid but those make log line too long.
+Perhaps in future I’ll use the ‘context’ stuff they included quite resently.
+I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed that much yet.</p>
 
 <h1 id="-packages"><a href="#header-1"></a> packages</h1>
-<p>coming soo..</p>
+
+<p>package imports are like the one’s in python, and acts like class in C++.
+Each package file can even have init() function.. like class constructor in C++.</p>
+
+<p>As I wrote earlier funtion names with starting capitals are public with small letter private to the file (or in C++ to the class).</p>
+
+<p>This does not only apply to the functions but also to the e.g constans, structs etc.</p>
+
+<p>Again nothing really compilated.</p>
+
+<p>in file src/my_utils.go</p>
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">Foo</span><span class="p">(</span><span class="n">x</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"foo %d"</span><span class="p">,</span><span class="x"> </span><span class="n">x</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>so in my_prog.go I can call it.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="n">my_utils</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">Foo</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h1 id="-imported-packages"><a href="#header-2"></a> imported packages</h1>
+
+<p>Public funtions you can overwrite, like virtual function in C++.
+Now the real mess starts when you include/import some package that uses private structs and/or constants.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"my_utils"</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="k">var</span><span class="x"> </span><span class="n">y</span><span class="x"> </span><span class="n">my_utils</span><span class="o">.</span><span class="n">my_server</span><span class="x">
+     </span><span class="n">y</span><span class="o">.</span><span class="n">bar</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="s">"not bar"</span><span class="x">
+     </span><span class="n">my_utils</span><span class="o">.</span><span class="n">Foo</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="x"> </span><span class="n">y</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+<p>in file my_utils.go, I added private my_server</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">my_utils</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+
+</span><span class="k">type</span><span class="x"> </span><span class="n">my_server</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+   </span><span class="n">bar</span><span class="x"> </span><span class="kt">string</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">Foo</span><span class="p">(</span><span class="n">x</span><span class="x"> </span><span class="kt">int</span><span class="p">,</span><span class="x"> </span><span class="n">y</span><span class="x"> </span><span class="n">my_server</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"foo %d, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">x</span><span class="p">,</span><span class="x"> </span><span class="n">y</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>Because my_server is private I can not use Foo(), I can not even access/set the bar variable if I change the my_server to public My_server !!</p>
+
+<p>Now because the my_server is private I can not overwrite the Foo() anymore in my main().</p>
+
+<p>In C++ you could inherit the whole class (my_utils), and then overwrite the Foo().</p>
+
+<p>As far I know ,you can not do this in golang with out tricks ;(</p>
+
+<h1 id="-some-whining-about-this-issue"><a href="#header-3"></a> some whining about this issue</h1>
+
+<p>“They are privat for a reason”.. bollocks, my personal quess is that I would do it.. because as said in C++ you can just inherit and do what ever you want with members.</p>
+
+<p>Yeah, I know this is what the golang interface stuff is for but you see this all the time.. and end up ripping others code.</p>
+
+<p>A lot of code/project what I have seen are not writen to be extended or used anywhere else than specific case, even the projects intention was to create interface !</p>
+
+<p>In general I have started to be little sceptical of projects started 2/3 years ago.. A lot of them seem to be playing with golang and just dumped to github.
+I hope standard library has sceptical members what to put there or were are in the mess as some many other languages.</p>
+
+<p>So I learned <strong>my lesson</strong>, I have to think what members really need be private or use interface in an github project. 
+If I think it is any use to anybody other than just cut and paste code.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The end so far.
 </code></pre></div></div>
