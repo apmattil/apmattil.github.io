@@ -9,7 +9,7 @@ commentIssueId: 1
 
 So I needed to learn golang.. I tought I'll share my experiences.
 
-Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but you will anyway.
+Of course I made some assosations in my mind with C/C++/python. I know golang tutorials let you know that you should not make such assumptions.. but I could not help my self but to make them anyway.
 
 So here is what I learned this far :
 
@@ -85,6 +85,8 @@ something 5 hello
 
 I think them as threads, fork etc.
 
+Here main() waits for childs to exit and first foo() finnishes last.
+
 ```golang
 package main
 
@@ -109,7 +111,9 @@ func main() {
 	time.Sleep(500*time.Millisecond)
 }
 ```
-For some really good reason there ++really is no++ official api/function to get the go routine id (thread id), so I just use some id for now. I did try to use uuid but those make log line too long.
+For some really good reason there ++really is no++ official api/function to get the go routine id (thread id).
+So I just use some id for now. I did try to use uuid but those make log line too long.
+
 Perhaps in future I'll use the 'context' stuff they included quite resently.
 I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed that much yet.
 
@@ -152,16 +156,6 @@ func main() {
 Public funtions you can overwrite, like virtual function in C++.
 Now the real mess starts when you include/import some package that uses private structs and/or constants.
 
-```golang
-package main
-import "my_utils"
-
-func main() {
-     var y my_utils.my_server
-     y.bar = "not bar"
-     my_utils.Foo(5, y)
-}
-```
 in file my_utils.go, I added private my_server
 
 ```golang
@@ -177,10 +171,22 @@ func Foo(x int, y my_server) {
 }
 ```
 
-Because my_server is private I can not use Foo(), I can not even access/set the bar variable if I change the my_server to public My_server !!
+At main I try to use it.
 
+```golang
+package main
+import "my_utils"
 
-Now because the my_server is private I can not overwrite the Foo() anymore in my main().
+func main() {
+     var y my_utils.my_server
+     y.bar = "not bar"
+     my_utils.Foo(5, y)
+}
+```
+
+Because my_server is private I can not use public funtion Foo().
+I can not even access/set the bar variable if I change the my_server to public My_server !!
+Same apply if the private is the this-pointer instance I mentioned at function paragraph.
 
 In C++ you could inherit the whole class (my_utils), and then overwrite the Foo().
 
@@ -201,7 +207,9 @@ So I learned **my lesson**, I have to think what members really need be private 
 If I think it is any use to anybody other than just cut and paste code.
 
 
->```
+
+
+```
 The end so far.
 ```
 
