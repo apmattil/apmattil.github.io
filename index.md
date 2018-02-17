@@ -50,10 +50,40 @@ You need brackes if you have more than one return value (btw really nice feature
 
 I think it is stated somewhere but I missed first that if function name starts with CAPITAL e.f Foo() it is public when in package.
 
+# [](#header-1) funtions
+
+Basic function is simple as above.
+But then there is sometimes stuff just after the 'func' keyword, tutorials somehow seem to skip this .. I leared this by googling the very similar question.
+
+But then function can be also 'class/struct' function.
+
+That is the stuff in brackets after 'func' is like automaticly made class/struct instance.. and used like this-pointer in C++.
+
+```golang
+package main
+import "fmt"
+
+type zoo struct {
+     i string
+}
+
+func (y zoo) Foo(x int) {
+      fmt.Printf("something %d %s\n", x, y.i)
+}
+
+func main() {
+     y := zoo{}
+     y.i = "hello" 
+     y.Foo(5)
+}
+```
+output of this is : 
+something 5 hello
+
+
 # [](#header-1) go routines
 
 I think them as threads, fork etc.
-(I don't know how to add neat golang play area here yet, but if you run this first foo funtion exits last.)
 
 ```golang
 package main
@@ -81,12 +111,12 @@ func main() {
 ```
 For some really good reason there ++really is no++ official api/function to get the go routine id (thread id), so I just use some id for now. I did try to use uuid but those make log line too long.
 Perhaps in future I'll use the 'context' stuff they included quite resently.
-I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed yet.
+I also heard that golang has inbuilt thread/go routine/function engine.. so you should be able to run more than real threads.. never needed that much yet.
 
 # [](#header-1) packages
 
 package imports are like the one's in python, and acts like class in C++.
-Each package file can have init() function.. like constructor in C++.
+Each package file can even have init() function.. like class constructor in C++.
 
 As I wrote earlier funtion names with starting capitals are public with small letter private to the file (or in C++ to the class).
 
@@ -117,7 +147,48 @@ func main() {
 
 # [](#header-2) imported packages
 
+Public funtions you can overwrite, like virtual function in C++.
 Now the real mess starts when you include/import some package that uses private structs and/or constants.
+
+```golang
+package main
+import "my_utils"
+
+func main() {
+     var y my_utils.my_server
+     y.bar = "not bar"
+     my_utils.Foo(5, y)
+}
+```
+in file my_utils.go, I added private my_server
+
+```golang
+package my_utils
+import "fmt"
+
+type my_server struct {
+   bar string
+}
+
+func Foo(x int, y my_server) {
+	fmt.Printf("foo %d, %s\n", x, y)
+}
+```
+
+Because my_server is private I can not use Foo(), I can not even access/set the bar variable if I change the my_server to public My_server !!
+
+Now because the my_server is private I can not overwrite the Foo() anymore in my main().
+
+In C++ you could inherit the whole class (my_utils), and then overwrite the Foo().
+
+As far I know you can not do this in golang ;(
+
+Yeah, I know this is what the golang interface stuff is for but you see this all the time.. and end up ripping others code.
+
+A lot of code/project what I have seen are not writen to be extended or used anywhere else than specific case, even the projects intention was to create interface !
+
+In general I have started to be little sceptical of projects started 2/3 years ago.. A lot of them seem to be playing with golang and just dumped to github.
+
 
 ```
 The end so far.
