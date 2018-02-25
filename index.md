@@ -84,7 +84,10 @@ something 5 hello
 
 # [](#header-1) go routines
 
-I think them as threads, fork etc.
+I think them as threads (not fork).
+
+just add 'go' before any function and it will start running in own thread.
+Also means that main has to wait for threads to end/exit.
 
 Here main() waits for childs to exit and first foo() finnishes last.
 
@@ -207,6 +210,9 @@ I hope standard library has sceptical members what to put there or were are in t
 So I learned **my lesson**, I have to think what members really need be private or use interface in an github project. 
 If I think it is any use to anybody other than just cut and paste code.
 
+# [](#header-2) interfaces
+
+after googling a lot my concusion is that they are like class in C++ with all functions as empty virtuals.
 
 
 
